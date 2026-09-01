@@ -10,6 +10,18 @@ const server = http.createServer((req, res) => {
     return homeRoute(req, res);
   }
 
+  if (req.url === '/quiz' && req.method === 'GET') {
+    const quizPath = path.join(__dirname, '..', 'public', 'quiz.html');
+    return fs.readFile(quizPath, (err, data) => {
+      if (err) {
+        res.writeHead(500);
+        return res.end('Error al cargar el quiz');
+      }
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.end(data);
+    });
+  }
+
   if (req.url === '/api/saludo' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     return res.end(JSON.stringify({ mensaje: 'Hola desde la API' }));
