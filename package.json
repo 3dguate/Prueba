@@ -1,0 +1,10 @@
+{
+  "name": "app-basica-node",
+  "version": "1.0.0",
+  "description": "App básica de Node.js para aprender estructura de archivos",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "license": "MIT"
+}
